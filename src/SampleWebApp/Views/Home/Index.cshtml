@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <div class="btn-group-vertical">
+        <a href="@Url.Action("GrpcRequest", "Home")" class="btn btn-primary mb-2">GRPC Request</a>
+        <a href="@Url.Action("WebRequest", "Home")" class="btn btn-success mb-2">HTTP Request</a>
+        <a href="@Url.Action("RedisRequest", "Home")" class="btn btn-warning mb-2">Redis Call</a>
+        <a href="@Url.Action("AllInOne", "Home")" class="btn btn-danger mb-2">All In One</a>
+        <a href="@Url.Action("Index", "Todo")" class="btn btn-info mb-2">Todo App</a>
+        <a href="@Url.Action("ExceptionsTest", "Home")" class="btn btn-secondary mb-2">Exception Demo</a>
+    </div>
+</div>

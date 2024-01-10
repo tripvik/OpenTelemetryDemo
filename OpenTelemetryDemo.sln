@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AC0F5157-7ABB-44F7-80D2-CB611EB69651}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleGrpcService", "src\SampleGrpcService\SampleGrpcService.csproj", "{E0009C6D-019F-4885-9821-D4B5C733F31C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "config", "config", "{5B0A5144-365A-4376-A638-3A5C59E85CB6}"
+	ProjectSection(SolutionItems) = preProject
+		config\otel-config.yaml = config\otel-config.yaml
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleWebApp", "src\SampleWebApp\SampleWebApp.csproj", "{51E2C9A4-CECF-4729-855F-F6DB695F8578}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E0009C6D-019F-4885-9821-D4B5C733F31C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0009C6D-019F-4885-9821-D4B5C733F31C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0009C6D-019F-4885-9821-D4B5C733F31C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0009C6D-019F-4885-9821-D4B5C733F31C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51E2C9A4-CECF-4729-855F-F6DB695F8578}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51E2C9A4-CECF-4729-855F-F6DB695F8578}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51E2C9A4-CECF-4729-855F-F6DB695F8578}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51E2C9A4-CECF-4729-855F-F6DB695F8578}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E0009C6D-019F-4885-9821-D4B5C733F31C} = {AC0F5157-7ABB-44F7-80D2-CB611EB69651}
+		{51E2C9A4-CECF-4729-855F-F6DB695F8578} = {AC0F5157-7ABB-44F7-80D2-CB611EB69651}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {34DEEAAC-D19F-488B-92E8-FD0E1AB30193}
+	EndGlobalSection
+EndGlobal

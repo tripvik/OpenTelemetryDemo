@@ -1,0 +1,37 @@
+﻿@model ExceptionModel
+
+@{
+    ViewData["Title"] = "Exception Form";
+
+    List<SelectListItem> exceptionTypes = new List<SelectListItem>
+    {
+        new SelectListItem { Value = "ArgumentNullException", Text = "ArgumentNullException" },
+        new SelectListItem { Value = "InvalidOperationException", Text = "InvalidOperationException" },
+        new SelectListItem { Value = "DivideByZeroException", Text = "DivideByZeroException" },
+        new SelectListItem { Value = "FileNotFoundException", Text = "FileNotFoundException" },
+        new SelectListItem { Value = "HttpRequestException", Text = "HttpRequestException" },
+        new SelectListItem { Value = "TimeoutException", Text = "TimeoutException" },
+        new SelectListItem { Value = "AccessViolationException", Text = "AccessViolationException" },
+        new SelectListItem { Value = "OutOfMemoryException", Text = "OutOfMemoryException" },
+    };
+}
+
+<form asp-action="ExceptionsTest" method="post" class="container mt-4">
+    <div class="mb-3">
+        <label asp-for="Type" class="form-label"></label>
+        <select asp-for="Type" class="form-select">
+            @foreach (var exceptionType in exceptionTypes)
+            {
+                <option value="@exceptionType.Value">@exceptionType.Text</option>
+            }
+        </select>
+        <span asp-validation-for="Type" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3 form-check">
+        <input asp-for="IsHandled" class="form-check-input" />
+        <label class="form-check-label" asp-for="IsHandled">Handle the Exception</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Generate</button>
+</form>

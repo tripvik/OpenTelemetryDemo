@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Todo>
+
+@{
+    ViewData["Title"] = "Todo App";
+}
+
+<div class="container mt-5">
+    <h2>Todos</h2>
+
+    <!-- Add Todo Form -->
+    <form asp-action="Create" method="post" class="mb-3">
+        <div class="input-group">
+            <label for="title" class="visually-hidden">Title:</label>
+            <input type="text" id="title" name="Title" class="form-control" placeholder="Enter Todo Title" required />
+            <button type="submit" class="btn btn-primary">Add Todo</button>
+        </div>
+    </form>
+
+    <!-- Display Todos as List -->
+    <div class="list-group">
+        @foreach (var todo in Model)
+        {
+            <div class="list-group-item d-flex justify-content-between align-items-center">
+                @if (todo.IsComplete)
+                {
+                    <p class="lead"><del>@todo.Title</del></p>
+                }
+                else
+                {
+                    <p class="lead">@todo.Title</p>
+                }
+                <div class="btn-group" role="group" aria-label="Todo Actions">
+                    <a href="/Todo/Toggle/@todo.Id" class="btn btn-secondary">@(todo.IsComplete ? "Undo" : "Done")</a>
+                    <a href="/Todo/Remove/@todo.Id" class="btn btn-outline-danger">Remove</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

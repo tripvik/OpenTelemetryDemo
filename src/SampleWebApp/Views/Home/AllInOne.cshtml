@@ -1,0 +1,72 @@
+﻿@{
+    ViewData["Title"] = "All In One";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center">@ViewData["Title"]</h2>
+
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <strong>Error:</strong> @ViewBag.ErrorMessage
+        </div>
+    }
+    else
+    {
+        <div class="response-section mt-4">
+            <h3>gRPC Response:</h3>
+            <p>@ViewBag.GrpcMessage</p>
+        </div>
+
+        <div class="response-section mt-4">
+            <h3>Redis Existing Key-Value Pairs:</h3>
+            @if (ViewBag.ExistingPairs != null && ViewBag.ExistingPairs.Count > 0)
+            {
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Key</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var pair in ViewBag.ExistingPairs)
+                        {
+                            <tr>
+                                <td>@pair.Key</td>
+                                <td>@pair.Value</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p>No existing key-value pairs found.</p>
+            }
+        </div>
+
+        <div class="response-section mt-4">
+            <h3>HTTP Response:</h3>
+
+            <div class="alert alert-@((int)ViewBag.ResponseStatusCode >= 400 ? "danger" : "success")" role="alert">
+                <strong>Status Code:</strong> @ViewBag.ResponseStatusCode
+            </div>
+
+            @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+            {
+                <div class="alert alert-danger" role="alert">
+                    <strong>Error:</strong> @ViewBag.ErrorMessage
+                </div>
+            }
+            else
+            {
+                <textarea class="form-control mt-3" style="min-height: 150px;">@ViewBag.SiteContent</textarea>
+            }
+        </div>
+    }
+
+    <div class="text-center mt-4">
+        <a class="btn btn-primary" asp-action="Index" asp-controller="Home">Back to Home</a>
+    </div>
+</div>

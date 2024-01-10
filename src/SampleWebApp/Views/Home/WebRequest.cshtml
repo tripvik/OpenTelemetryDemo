@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Web Result";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4">@ViewData["Title"]</h2>
+
+    <form method="post" asp-action="WebRequest" class="mb-4">
+        <div class="mb-3">
+            <label for="siteUrl" class="form-label">Site URL:</label>
+            <input type="text" class="form-control" id="siteUrl" name="siteUrl" />
+        </div>
+        <button type="submit" class="btn btn-primary">Send HTTP Request</button>
+    </form>
+
+    @if (!string.IsNullOrEmpty(ViewBag.SiteContent))
+    {
+        <div class="response-section">
+            <h3>HTTP Response:</h3>
+
+            <div class="alert alert-@((int)ViewBag.ResponseStatusCode >= 400 ? "danger" : "success")" role="alert">
+                Status Code: @ViewBag.ResponseStatusCode
+            </div>
+
+            @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+            {
+                <div class="alert alert-danger" role="alert">
+                    Error: @ViewBag.ErrorMessage
+                </div>
+            }
+            else
+            {
+                <textarea class="form-control" style="min-height: 150px;">@ViewBag.SiteContent</textarea>
+            }
+        </div>
+    }
+    else if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+    {
+        <div class="alert alert-danger" role="alert">
+            Error: @ViewBag.ErrorMessage
+        </div>
+    }
+
+    <div class="mt-3">
+        <a asp-action="Index" asp-controller="Home" class="btn btn-secondary">Back to Home</a>
+    </div>
+</div>

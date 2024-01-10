@@ -1,0 +1,52 @@
+extensions:
+  oauth2client/appd:
+    client_id: <your_client_id>
+    client_secret: <your_client_secret>
+    token_url: <your_token_url>   
+    
+receivers:
+  otlp:
+    protocols:
+      grpc:
+      http:
+      
+exporters:
+  debug:
+    verbosity: detailed
+  otlphttp/appd:    
+    traces_endpoint: https://<tenant_Name>.observe.appdynamics.com/data/v1/trace 
+    metrics_endpoint: https://<tenant_Name>.observe.appdynamics.com/data/v1/metrics    
+    logs_endpoint: https://<tenant_Name>.observe.appdynamics.com/data/v1/logs    
+    auth: 
+      authenticator: oauth2client/appd 
+  zipkin:
+    endpoint: "http://localhost:9411/api/v2/spans"
+    tls:
+      insecure: true
+
+processors:
+  batch:
+    timeout: 10s
+  batch/2:
+    send_batch_size: 1000
+    send_batch_max_size: 1100
+    timeout: 10s
+
+service:
+  extensions: [oauth2client/appd]
+  telemetry:
+    logs:
+      level: "debug"
+  pipelines:
+    traces: 
+      receivers: [otlp] 
+      processors: [batch] 
+      exporters: [otlphttp/appd,debug,zipkin] 
+    metrics: 
+      receivers: [otlp] 
+      processors: [batch] 
+      exporters: [otlphttp/appd,debug]
+    logs:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [otlphttp/appd]
