@@ -33,11 +33,11 @@ Register-OpenTelemetryForIIS
 
 ## III. Configure and Run OpenTelemetry Collector
 
-1. **Navigate to the [CNAO tenant](https://<tenant_name>.observe.appdynamics.com/ui/configure/kubernetes-and-apm) and generate OAuth credentials.**
+1. **Navigate to the CNAO tenant (https://<tenant_name>.observe.appdynamics.com/ui/configure/kubernetes-and-apm) and generate OAuth credentials.**
 
 2. **Download the Otel Collector for Windows from [here](https://github.com/open-telemetry/opentelemetry-collector-releases/releases).**
 
-3. **Update the credentials in the collector configuration in config folder `otel-config.yaml`.**
+3. **Update the credentials in the collector configuration `otel-config.yaml` located in the config folder .**
 
 4. **Start `otelcol-contrib.exe` using the following command:**
 
