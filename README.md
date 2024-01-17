@@ -1,4 +1,4 @@
-# OpenTelemetry Auto-Instrumentation Demo
+# OpenTelemetry Auto-Instrumentation on Windows Demo
 
 ## I. Install the Sample Application on IIS
 
