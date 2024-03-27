@@ -2,7 +2,7 @@
 
 namespace SampleWebApp.Models
 {
-    public class Todo
+    public class Todo : Tada
     {
         public int Id { get; set; }
         [Required]

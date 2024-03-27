@@ -17,6 +17,15 @@ namespace SampleWebApp.Controllers
         // GET: Todo
         public async Task<IActionResult> Index()
         {
+            var todo = new Todo()
+            {
+                Id = 111,
+                Title = "Test",
+                IsComplete = true,
+            };
+            
+            await TestMethod(todo);
+
             return View(await _context.Todos.ToListAsync());
         }
 
@@ -82,6 +91,13 @@ namespace SampleWebApp.Controllers
         private bool TodoExists(int id)
         {
             return _context.Todos.Any(e => e.Id == id);
+        }
+
+        private async Task<bool> TestMethod(Todo todo)
+        {
+            var aa = todo.Name;
+            await Task.Delay(1000);
+            return todo.IsComplete;
         }
     }
 }

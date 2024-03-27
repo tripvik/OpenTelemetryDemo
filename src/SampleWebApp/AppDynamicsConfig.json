@@ -1,0 +1,17 @@
+{
+    "controller": {
+        "host": "",
+        "port": 443,
+        "ssl": true,
+        "account": "",
+        "password": ""
+    },
+    "application": {
+        "name": "Vikash_Test",
+        "tier": "Sample tier",
+        "node": "Instance1"
+    },
+    "feature": [
+        "FULL_AGENT"
+    ]
+}
